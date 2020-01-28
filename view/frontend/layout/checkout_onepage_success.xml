@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<body>
+    <referenceBlock name="checkout.success">
+        <action method="setTemplate">
+            <argument name="template" xsi:type="string">Sunarc_Splitorderpro::success.phtml</argument>
+        </action>
+    </referenceBlock>
+ <!--   <referenceContainer name="content">
+        <block class="Sunarc\SplitorderDynamicShipping\Block\Success"
+               name="sunarc.order.success"
+               template="Sunarc_SplitorderDynamicShipping::success.phtml"
+                ifconfig="splitorderdynamicshipping/general/enable">
+        </block>
+    </referenceContainer>-->
+ <!--  <referenceBlock name="checkout.success"  template="success.phtml" remove="true"/> -->
+</body>
+

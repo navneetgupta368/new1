@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <!-- <event name="layout_generate_blocks_after">
+        <observer name="remove_success_block" instance="Sunarc\Splitorderpro\Observer\RemoveBlock" />
+    </event> -->
+    <event name="checkout_submit_all_after">
+        <observer name="splitorder" instance="Sunarc\Splitorderpro\Observer\CheckoutAllSubmitAfterObserver"/>
+    </event>
+    <event name="paypal_express_place_order_success">
+        <observer name="splitorder" instance="Sunarc\Splitorderpro\Observer\CheckoutAllSubmitAfterObserver"/>
+    </event>
+    <event name="sales_quote_item_set_product">
+        <observer name="splitorder_attribute_save" instance="Sunarc\Splitorderpro\Observer\SalesQuoteItemSetSplitorderAttribute"/>
+    </event>
+</config>

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Sunarc_Splitorderpro extension
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the SunArc Technologies License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://sunarctechnologies.com/end-user-agreement/
+ * 
+ * @category  Sunarc
+ * @package   Sunarc_Splitorderpro
+ * @copyright Copyright (c) 2017
+ * @license
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="styles"/>
+    <body>
+        <referenceBlock name="menu">
+            <action method="setActive">
+                <argument name="itemId" xsi:type="string">Sunarc_Splitorderpro::splitorderpro_splitattrs</argument>
+            </action>
+        </referenceBlock>
+        <referenceBlock name="page.title">
+            <action method="setTitleClass">
+                <argument name="class" xsi:type="string">complex</argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="content">
+            <uiComponent name="sunarc_splitorderpro_splitattr_listing"/>
+        </referenceContainer>
+    </body>
+</page>

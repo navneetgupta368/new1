@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Sunarc_Splitorderpro extension
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the SunArc Technologies License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://sunarctechnologies.com/end-user-agreement/
+ * 
+ * @category  Sunarc
+ * @package   Sunarc_Splitorderpro
+ * @copyright Copyright (c) 2017
+ * @license
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Sunarc\Splitorderpro\Controller\Adminhtml\Splitattr\MassDelete">
+        <arguments>
+            <argument name="successMessage" xsi:type="string">A total of %1 Splitattrs have been deleted.</argument>
+            <argument name="errorMessage" xsi:type="string" translate="true">An error occurred while deleting Splitattrs.</argument>
+        </arguments>
+    </type>
+</config>

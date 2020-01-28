@@ -1,0 +1,52 @@
+<script type="text/javascript">
+    require(['jquery'],
+        function ($) {
+            $(document).ready(function() {
+                var option, ajaxurl, form_key = '';
+                setTimeout(function() {
+                    $('select[name="split_order_attr"]').change(function () {
+                        var field_value= $('select[name="split_order_attr"] option:selected').text();
+                        $('[name="attr_value"]').html('');
+                        if (field_value) {
+                            var option = field_value;
+                            var splitattrId="<?php echo $this->getRequest()->getParam('splitattr_id');?>";
+                            if(splitattrId === ''){
+                                var edit=0;
+                            }
+                            else{
+                                var edit=1;
+                            }
+                            }
+                        $.ajax({
+                            url: "<?php echo $this->getUrl('sunarc_splitorderpro/splitattr/getattribute'); ?>",
+                            showLoader: true,
+                            data:  {option : option,edit:edit} ,
+                            type: "GET",
+                            dataType: 'json'
+                        }).done(function (data) {
+                            if (data) {
+                                var myObj = $.parseJSON(JSON.stringify(data));
+                                var arrayOpt = myObj.option.length;
+                                if (myObj.status == 1 && arrayOpt > 0) {
+                                    try {
+                                        for (var i = 0; i<=arrayOpt; i++) {
+                                            $('[name="attr_value"]').append($('<option>', {
+                                                text:myObj.option[i],
+                                                value: myObj.optionId[i]
+                                            }));
+                                        }
+                                    }
+                                    catch (e) {
+                                        alert("Something went wrong. Please try again.");
+                                    }
+                                }
+                                else {
+                                    alert("Something went wrong... Please try again.");
+                                }
+                            }
+                        });
+                    });
+                },5000);
+        });
+    });
+</script>

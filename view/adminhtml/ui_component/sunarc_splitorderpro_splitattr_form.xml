@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Sunarc_Splitorderpro extension
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the SunArc Technologies License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://sunarctechnologies.com/end-user-agreement/
+ * 
+ * @category  Sunarc
+ * @package   Sunarc_Splitorderpro
+ * @copyright Copyright (c) 2017
+ * @license
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">sunarc_splitorderpro_splitattr_form.splitattr_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Splitattr Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="back" class="Sunarc\Splitorderpro\Block\Adminhtml\Splitattr\Edit\Buttons\Back"/>
+            <button name="delete" class="Sunarc\Splitorderpro\Block\Adminhtml\Splitattr\Edit\Buttons\Delete"/>
+            <button name="reset" class="Sunarc\Splitorderpro\Block\Adminhtml\Splitattr\Edit\Buttons\Reset"/>
+            <button name="save" class="Sunarc\Splitorderpro\Block\Adminhtml\Splitattr\Edit\Buttons\Save"/>
+            <button name="save_and_continue" class="Sunarc\Splitorderpro\Block\Adminhtml\Splitattr\Edit\Buttons\SaveAndContinue"/>
+        </buttons>
+        <namespace>sunarc_splitorderpro_splitattr_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>sunarc_splitorderpro_splitattr_form.splitattr_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="splitattr_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="sunarc_splitorderpro/splitattr/save"/>
+        </settings>
+        <dataProvider class="Sunarc\Splitorderpro\Model\Splitattr\DataProvider" name="splitattr_form_data_source">
+            <settings>
+                <requestFieldName>splitattr_id</requestFieldName>
+                <primaryFieldName>splitattr_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general">
+        <settings>
+            <label translate="true">Splitorderpro Attribute Information</label>
+        </settings>
+        <field name="splitattr_id" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">splitattr</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <visible>false</visible>
+                <dataScope>splitattr_id</dataScope>
+            </settings>
+        </field>
+        <field name="priority" sortOrder="20" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">splitattr</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Priority</label>
+                <dataScope>priority</dataScope>
+            </settings>
+        </field>
+        <field name="split_order_attr" formElement="select" sortOrder="10">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">splitattr</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Select Attribute For Split Order</label>
+                <dataScope>split_order_attr</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Sunarc\Splitorderpro\Model\Splitattr\Source\SplitOrderAttr"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="attr_value" formElement="multiselect" sortOrder="30">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">splitattr</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Attribute Options</label>
+                <dataScope>attr_value</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+            <formElements>
+                <multiselect>
+                    <settings>
+                        <options class="Sunarc\Splitorderpro\Model\Splitattr\Source\AttrValue"/>
+                    </settings>
+                </multiselect>
+            </formElements>
+        </field>
+    </fieldset>
+</form>
